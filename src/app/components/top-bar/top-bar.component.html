@@ -1,0 +1,57 @@
+<div class="top__bar">
+  <div><i class="bi bi-calendar2-x"></i> {{ date }} <i class="bi bi-clock"></i> {{ time }}.</div>
+  <div>
+    <form [formGroup]="loginForm" class="top__bar big" *ngIf="!user">
+      <div class="top__bar">
+        <label for="username">Email: </label>
+        <input type="text" id="username" formControlName="username" />
+        <div
+          *ngIf="
+            loginForm.get('username')?.invalid &&
+            (loginForm.get('username')?.dirty ||
+              loginForm.get('username')?.touched)
+          "
+        >
+          <div *ngIf="loginForm.get('username')?.hasError('required')">
+            Email jest wymagany.
+          </div>
+          <div *ngIf="loginForm.get('username')?.hasError('minlength')">
+            Email musi zawierać co najmniej 4 znaki.
+          </div>
+          <div *ngIf="loginForm.get('username')?.hasError('email')">
+            Podaj poprawny adres email.
+          </div>
+        </div>
+      </div>
+      <div class="top__bar">
+        <label for="password">Hasło:</label>
+        <input type="{{showPassword ? 'text' : 'password'}}" id="password" formControlName="password" class="password-input"/>
+        <span class="toggle__password bi" [ngClass]="{ 'bi-eye': !showPassword, 'bi-eye-slash': showPassword }" (click)="togglePassword()"></span>
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            (loginForm.get('password')?.dirty ||
+              loginForm.get('password')?.touched)
+          "
+        >
+          <div *ngIf="loginForm.get('password')?.hasError('required')">
+            Hasło jest wymagane.
+          </div>
+          <div *ngIf="loginForm.get('password')?.hasError('minlength')">
+            Hasło musi zawierać co najmniej 6 znaków.
+          </div>
+        </div>
+      </div>
+      <button type="submit" (click)="onSubmit()">Zaloguj</button>
+      <button type="submit" (click)="onRegister()">Rejestracja</button>
+    </form>
+    <div *ngIf="user" class="top__bar">
+    <div>Witaj, {{user.name}}</div>
+    <button type="submit" (click)="onLogOut()">Wyloguj</button>
+    </div>
+    <div *ngIf="!user" class="top__bar small">
+      <button type="submit" (click)="onSmallSubmit()">Zaloguj</button>
+      <button type="submit" (click)="onSmallRegister()">Rejestracja</button>
+    </div>
+  </div>
+</div>

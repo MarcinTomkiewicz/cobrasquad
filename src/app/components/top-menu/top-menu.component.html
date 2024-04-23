@@ -1,0 +1,30 @@
+<div class="top__menu">
+  <div style="flex-shrink: 1; height: 100%">
+    <img
+      src="../assets/images/logo.png"
+      style="height: 100%; flex-shrink: 2"
+      alt="Stowarzyszenie Miłośników Militariów Cobra Squad"
+    />
+  </div>
+  <div class="menu__items">
+    <div class="menu__element--wrapper">
+      <div class="menu__element"><a [routerLink]="['/']">Home</a></div>
+    </div>
+    <div class="menu__element--wrapper">
+      <div class="menu__element">Galeria</div>
+    </div>
+    <div class="menu__element--wrapper">
+      <div class="menu__element">Zloty</div>
+    </div>
+    <div class="menu__element--wrapper">
+      <div class="menu__element">
+        <a [routerLink]="['/about']">O nas</a></div>
+    </div>
+    <div class="menu__element--wrapper">
+      <div class="menu__element">Kontakt</div>
+    </div>
+    <div class="menu__element--wrapper" *ngIf="user?.isAdmin">
+      <div class="menu__element">Panel admina</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+.top__menu {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 150px;
+	position: relative;
+}
+
+.menu__items {
+	display: flex;
+	margin-left: 15px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: bold;
+	font-size: 1.2rem;
+	position: relative;
+	transition: all 0.35s;
+	z-index: 2;
+	width: 750px;
+}
+
+.menu__element--wrapper {
+	width: 17%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: black;
+	position: relative;
+	height: 40px;
+    cursor: pointer;
+}
+
+.menu__element--wrapper::after {
+	visibility: hidden;
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background-image: -webkit-linear-gradient(top, rgb(210, 212, 206), rgb(26, 45, 0));
+	transition: ease-out 0.5s;
+	-webkit-transform: skew(-30deg, 0deg);
+	-moz-transform: skew(-30deg, 0deg);
+	-ms-transform: skew(-30deg, 0deg);
+	-o-transform: skew(-30deg, 0deg);
+	transform: skew(-30deg, 0deg);
+	border: rgb(26, 45, 0) solid 3px;
+}
+.menu__element--wrapper.selected__element::after {
+	visibility: unset;
+	width: 100%;
+}
+
+.menu__element--wrapper:hover:after {
+	visibility: unset;
+	width: 100%;
+}
+
+.hamburger__menu {
+	display: none;
+}
+
+@keyframes filling {
+	from {
+		clip-path: inset(0 0 0 0);
+	}
+	to {
+		clip-path: inset(0 100% 0 0);
+	}
+}
+
+.menu__element {
+	z-index: 3;
+}
+
+.home__image {
+	object-fit: cover;
+	width: 100%;
+	object-position: 100% 25%;
+}
